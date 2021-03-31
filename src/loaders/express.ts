@@ -6,7 +6,11 @@ import express from 'express';
 
 export default async ({ app }: { app: Application }) => {
     app.set('port', process.env.PORT || 5000 );
-    app.use( express.urlencoded({ extended: true }));
-    app.use( express.json() );
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
+    app.use(morgan('dev'));
+    app.use(cors());
+
+    // app.use( new Routes().expose());
 
 };
