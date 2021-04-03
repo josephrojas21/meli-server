@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import { query } from 'express-validator';
+
+import { searchItems, detailsProduct } from '../controllers/items';
 
 const router = Router();
 
@@ -6,12 +9,12 @@ export default (app: Router) => {
   app.use('/api', router);
 
   // register Users
-  router.get('/items', (req, res, next) => {
-    res.status(200).json({message: 'Server is online and in items'});
-  });
+  router.get('/items', [
+    query('q').trim(),
+  ], searchItems);
 
   // Login Users
-  router.post('/login')
+  router.get('/items/:id', detailsProduct);
 
 };
 
