@@ -27,5 +27,4 @@ export const detailsProduct = async ( req: Request, res: Response, next: NextFun
         next(error);
     }
 
-    res.status(200).json({ message: `hola descripcion`});
 };
