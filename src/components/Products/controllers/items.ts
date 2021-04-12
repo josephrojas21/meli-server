@@ -5,11 +5,11 @@ import ItemsService from '../services';
 
 
 export const searchItems = async ( req: Request, res: Response, next: NextFunction) => {
-    const { query } = req;
+    const { query: { q } } = req;
     const itemsService = new ItemsService();
 
     try {
-        const resultItems = await itemsService.getSearchItems(String(query));
+        const resultItems = await itemsService.getSearchItems(String(q));
         res.status(200).send(resultItems);
     } catch (error) {
         next(error);
